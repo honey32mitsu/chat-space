@@ -17,15 +17,15 @@
 |nickname|string|index: true|
 ### Association
 - has_many :groups_users
-- has_many :message
+- has_many :messages
 - has_many  :group,  through:  :groups_users
 
 ## messageテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|string|null: false|
+|text|string||
 |user|references|null: false, foreign_key: true|
-|image|string|null: false|
+|image|string||
 |group|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
@@ -37,5 +37,5 @@
 |name|string|index: true|
 ### Association
 - has_many :groups_users
-- has_many :user,  through:  :groups_users
+- has_many :users,  through:  :groups_users
 - has_many :messages
