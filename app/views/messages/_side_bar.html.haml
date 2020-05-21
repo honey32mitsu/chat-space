@@ -2,27 +2,22 @@
   .user-name
     .top-items
       .name 
-        mitsu
+        = current_user.name
       .top-items__icons
-        =link_to"#",class:"top-items__icons top-items__icons__left-icon"do
+        = link_to new_group_path ,class:"top-items__icons top-items__icons__left-icon"do
           =icon('far','edit',class:'top-items__icons--left-icon')
           %span<>
-        =link_to"#",class:"top-items__icons top-items__icons__right-icon"do
+        = link_to edit_user_path(current_user),class:"top-items__icons top-items__icons__right-icon"do
           =icon('fas','cog',class:'top-items__icons--right-icon')
           %span<>
   .group-items
-    .group-box
-      .group-name
-        techcamp
-    .message-box
-      .group-message
-        まだメッセージがありません
-  .group-items
-    .group-box
-      .group-name
-        techcamp
-    .message-box
-      .group-message
-        まだメッセージがありません
+    - current_user.groups.each do |group|
+      .group-box
+        = link_to '#' do
+          .group-name
+            = group.name
+        .message-box
+          .group-message
+            まだメッセージがありません
+      
   .group-list
-    
