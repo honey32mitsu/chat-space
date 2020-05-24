@@ -40,13 +40,11 @@
     .post
       .post-input
         .post-text
-          %input{type: "text", placeholder: "type a message", class: "post-text__text"}
-        .post-image
-          %label{class: "input-box__image"}
-            = icon('far', 'image')
-            %input{type: "file",class: "post-image__file"}
-      .post-send
-        = link_to '#', class: 'send__point' do
-          %p.post-send__point
-          Send
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, class: 'post-text__text', placeholder: 'type a message'
+          .post-image
+          = f.label :image, class: 'input-box__image' do
+            = icon('fas', 'image', class: 'icon')
+            = f.file_field :image, class: 'post-image__file'
+        = f.submit 'Send', class: 'send__point__point'
           -# %input{type: "submit", class: 'submit-btn', value: "Send"}
