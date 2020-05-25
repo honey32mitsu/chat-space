@@ -2,15 +2,17 @@
   .group-info
     .main-header
       .info-menu
-        techcamp
+        = @group.name
       .menu-group
-        Member :
+        Member:
+        - @group.users.each do |user|
+          = user.name
     .edit-box
       .edit-bar
         .edit-icon
           .edit-command
             .edit-command__button
-              =link_to "#", class:"button__btn" do
+              = link_to edit_group_path(@group.id), class:"button__btn" do
                 %p.command__btn
                   Edit
   .message-list
@@ -18,24 +20,15 @@
       .tweet
         .tweet-tag
           .tweet-name
-            mitsu
+            = message.user.name
           .tweet-time
-            2020/05/09 23:36:54
+            = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
       .text
         .message-text
           .text-box
-            おはよ！
-    .center-chat
-      .tweet
-        .tweet-tag
-          .tweet-name
-            mitsu
-          .tweet-time
-            2020/05/09 23:36:54
-      .text
-        .message-text
-          .text-box
-            おはよ！
+            - if message.content.present?
+              = message.content
+                = image_tag message.image.url, class: 'text-box' if message.image.present?
   .message-form
     .post
       .post-input
@@ -46,7 +39,4 @@
             = icon('far', 'image')
             %input{type: "file",class: "post-image__file"}
       .post-send
-        = link_to '#', class: 'send__point' do
-          %p.post-send__point
-          Send
-          -# %input{type: "submit", class: 'submit-btn', value: "Send"}
+        = f.submit 'Send', class: 'send__point'
