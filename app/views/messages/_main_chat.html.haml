@@ -2,51 +2,38 @@
   .group-info
     .main-header
       .info-menu
-        techcamp
+        = @group.name
       .menu-group
-        Member :
+        Member:
+        - @group.users.each do |user|
+          = user.name
     .edit-box
       .edit-bar
         .edit-icon
           .edit-command
             .edit-command__button
-              =link_to "#", class:"button__btn" do
+              = link_to edit_group_path(@group.id), class:"button__btn" do
                 %p.command__btn
                   Edit
   .message-list
-    .center-chat
-      .tweet
-        .tweet-tag
-          .tweet-name
-            mitsu
-          .tweet-time
-            2020/05/09 23:36:54
-      .text
-        .message-text
-          .text-box
-            おはよ！
-    .center-chat
-      .tweet
-        .tweet-tag
-          .tweet-name
-            mitsu
-          .tweet-time
-            2020/05/09 23:36:54
-      .text
-        .message-text
-          .text-box
-            おはよ！
+    = render @messages
+
   .message-form
-    .post
-      .post-input
-        .post-text
-          %input{type: "text", placeholder: "type a message", class: "post-text__text"}
-        .post-image
-          %label{class: "input-box__image"}
-            = icon('far', 'image')
-            %input{type: "file",class: "post-image__file"}
-      .post-send
-        = link_to '#', class: 'send__point' do
-          %p.post-send__point
-          Send
-          -# %input{type: "submit", class: 'submit-btn', value: "Send"}
+    = form_for [@group, @message] do |f|
+      .message__text
+        = f.text_field :content, class: 'message__text__text', placeholder: 'type a message'
+        = f.label :image, class: 'message__text__post' do
+          = icon('fas', 'image', class: 'icon')
+          = f.file_field :image, class: 'input'
+      = f.submit 'Send', class: 'send-point'
+
+      -#   .post-text
+      -#     %input{type: "text", placeholder: "type a message", class: "post-text__text"}
+      -#   .post-image
+      -#     %label{class: "input-box__image"}
+      -#       = icon('far', 'image')
+      -#       %input{type: "file",class: "post-image__file"}
+
+      -# .post-send
+      -#   %input{type: "submit",class: "send__point"}
+      -#   = f.submit 'Send', class: 'send__point'
