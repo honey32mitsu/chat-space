@@ -1,86 +1,82 @@
 .chat-side {
   width: 300px;
-  height: 100vh; 
-}
-
-.user-name {
-  width: 300px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-}
-
-.group-list {
-  width: 300px;
-  height: calc(100% - 100px);
-}
-
-.top-items {
-   width: 260px;
-   height: 20px;
-   align-items: center;
-   display: flex;
-   justify-content: space-between;
-
-   &__icons {
-    height: 20px;
-    width: 60px;
-    justify-content: right;
-    text-align: right;
-    &__left-icon {
-      font-size: 20px;
-    color: #ffffff;
-    height: 20px;
-    line-height: 20px;
-    margin: 0 5px 0 0 ;
-    }
-    &__right-icon {
-      font-size: 20px;
-      color: #ffffff;
+  height: 100vh;
+  .user-name {
+    width: 300px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .top-items {
+      width: 260px;
       height: 20px;
-      line-height: 20px;
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      .name {
+        font-size: 16px;
+        color: #ffffff;
+        height: 20px;
+      }
+    
+      &__icons {
+        height: 20px;
+        width: 60px;
+        justify-content: right;
+        text-align: right;
+        &__left-icon {
+          font-size: 14px;
+          color: #ffffff;
+          height: 20px;
+          line-height: 20px;
+          margin: 0 5px 0 0 ;
+        }
+        &__right-icon {
+          font-size: 14px;
+          color: #ffffff;
+          height: 20px;
+          line-height: 20px;
+        }
+      }
+    }
+    
+  }
+  .group-items {
+    width: 300px;
+    height: calc(100vh - 100px);
+    padding: 20px 20px 0;
+    overflow: scroll;
+    .group-box {
+      height: 15px;
+      margin: 20px 20px 5px 20px;
+      margin-bottom: 40px;
+        a {
+          text-decoration: none;
+        }
+        .group-name {
+          margin: 0;
+          padding: 0;
+          font-size: 15px;
+          color: #ffffff;
+        }
+        .message-box {
+          width: 260px;
+          height: 11px;
+          .group-message {
+            margin: 0;
+            padding: 0;
+            font-size: 11px;
+            color: #ffffff;
+        }
+      }
     }
   }
 }
 
-.name {
-  font-size: 16px;
-  color: #ffffff;
-  height: 20px;
-}
 
-.group-items {
-  width: 300px;
-  height: 91px;
-}
 
-.group-box {
-  height: 15px;
-  margin: 20px 20px 5px 20px;
-  a {
-    text-decoration: none;
-  }
-}
 
-.group-name {
-  margin: 0;
-  padding: 0;
-  font-size: 15px;
-  color: #ffffff;
-}
 
-.message-box {
-  width: 260px;
-  height: 11px;
-  margin: 0 20px 40px 20px;
-}
 
-.group-message {
-  margin: 0;
-  padding: 0;
-  font-size: 11px;
-  color: #ffffff;
-}
 
